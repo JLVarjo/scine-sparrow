@@ -10,6 +10,7 @@
 
 #include "GTOOverlapMatrixBlock.h"
 #include <Utils/Math/DerivOrderEnum.h>
+#include <Utils/DataStructures/AtomicGtos.h>
 #include <Eigen/Core>
 
 namespace Scine {

@@ -17,8 +17,8 @@ CISMatrixAOFockBuilder<restrictedness, spinBlock>::CISMatrixAOFockBuilder(CISDat
   : cisData_(std::move(cisData)) {
   c1_ = excitedStatesParam.c1;
   c2_ = excitedStatesParam.c2;
-  coulombContainer_ = std::make_shared<std::vector<std::map<int, std::unique_ptr<Eigen::MatrixXd>>>>();
-  exchangeContainer_ = std::make_shared<std::vector<std::map<int, std::unique_ptr<Eigen::MatrixXd>>>>();
+  coulombContainer_ = std::make_shared<std::vector<std::map<int, SMARTPTR<Eigen::MatrixXd>>>>();
+  exchangeContainer_ = std::make_shared<std::vector<std::map<int, SMARTPTR<Eigen::MatrixXd>>>>();
   initialize();
   calculateMatrices();
 }

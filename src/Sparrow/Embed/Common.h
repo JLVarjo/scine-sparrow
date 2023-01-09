@@ -11,6 +11,8 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <iso646.h>
+#include <algorithm>
 
 inline std::ostream& sep(std::ostream& os) {
   os << ", ";

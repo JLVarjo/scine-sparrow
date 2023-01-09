@@ -11,6 +11,7 @@
 #include <Sparrow/Implementations/DipoleMatrixCalculator.h>
 #include <Sparrow/Implementations/Nddo/Utils/IntegralsEvaluationUtils/GTOOverlapMatrixBlock.h>
 #include <Utils/Typenames.h>
+#include <Utils/DataStructures/GtoExpansion.h>
 #include <Eigen/Core>
 #include <array>
 

@@ -15,6 +15,7 @@
 #include <Utils/IO/ChemicalFileFormats/XyzStreamHandler.h>
 #include <gmock/gmock.h>
 #include <memory>
+#include <omp.h>
 
 namespace Scine {
 namespace Sparrow {

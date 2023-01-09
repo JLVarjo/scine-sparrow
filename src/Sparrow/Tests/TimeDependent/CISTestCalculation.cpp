@@ -21,6 +21,7 @@
 #include <Utils/UniversalSettings/SettingsNames.h>
 #include <gmock/gmock.h>
 #include <chrono>
+#include <omp.h>
 
 using namespace testing;
 

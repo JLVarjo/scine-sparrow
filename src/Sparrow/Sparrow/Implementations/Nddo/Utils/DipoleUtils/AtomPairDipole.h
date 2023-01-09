@@ -9,6 +9,7 @@
 #define SPARROW_ATOMPAIRDIPOLE_H
 
 #include <Utils/Typenames.h>
+#include <Utils/DataStructures/AtomicGtos.h>
 #include <Eigen/Core>
 #include <array>
 

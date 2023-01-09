@@ -18,6 +18,7 @@
 #include <Utils/Scf/ConvergenceAccelerators/ConvergenceAcceleratorFactory.h>
 #include <gmock/gmock.h>
 #include <Eigen/Core>
+#include <omp.h>
 
 namespace Scine {
 namespace Sparrow {

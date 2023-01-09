@@ -16,6 +16,7 @@
 #include <Utils/IO/ChemicalFileFormats/XyzStreamHandler.h>
 #include <Utils/Scf/ConvergenceAccelerators/ConvergenceAcceleratorFactory.h>
 #include <gmock/gmock.h>
+#include <omp.h>
 
 namespace Scine {
 namespace Sparrow {

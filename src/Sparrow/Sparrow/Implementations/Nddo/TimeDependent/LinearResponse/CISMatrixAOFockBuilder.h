@@ -11,6 +11,13 @@
 #include "CISPseudoDensityBuilder.h"
 #include <Sparrow/Implementations/TimeDependent/TimeDependentUtils.h>
 #include <Utils/Math/IterativeDiagonalizer/SigmaVectorEvaluator.h>
+
+#if defined(_WIN32) || defined(_WIN64)
+#  define SMARTPTR std::shared_ptr
+#elif defined(__linux__)
+#  define SMARTPTR std::unique_ptr
+#endif
+
 namespace Scine {
 namespace Sparrow {
 class CISData;
@@ -43,7 +50,7 @@ class CISMatrixAOFockBuilder : public CISMatrixAOFockBuilderBase<restrictedness>
   CISData cisData_;
   int nAtoms_{cisData_.AOInfo.getNAtoms()};
   int nAOs_{cisData_.AOInfo.getNAtomicOrbitals()};
-  std::shared_ptr<std::vector<std::map<int, std::unique_ptr<Eigen::MatrixXd>>>> coulombContainer_, exchangeContainer_;
+  std::shared_ptr<std::vector<std::map<int, SMARTPTR<Eigen::MatrixXd>>>> coulombContainer_, exchangeContainer_;
   static constexpr const double sparseThreshold_ = 1e-8;
   double c1_;
   double c2_;

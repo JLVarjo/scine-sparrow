@@ -23,6 +23,7 @@
 #include <gmock/gmock.h>
 #include <Eigen/Core>
 #include <iostream>
+#include <omp.h>
 
 namespace Scine {
 namespace Sparrow {
