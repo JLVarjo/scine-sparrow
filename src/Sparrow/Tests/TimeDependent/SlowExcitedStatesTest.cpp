@@ -19,7 +19,6 @@
 #include <gmock/gmock.h>
 #include <omp.h>
 #include <chrono>
-#include <omp.h>
 
 using namespace testing;
 

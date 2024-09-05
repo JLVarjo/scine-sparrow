@@ -60,7 +60,6 @@ target_link_libraries(Sparrow
     Scine::UtilsOS
     Scine::Core
   PRIVATE
-    cereal
     Boost::filesystem
     $<$<BOOL:${OpenMP_CXX_FOUND}>:OpenMP::OpenMP_CXX>
 )
@@ -88,7 +87,7 @@ scine_install_component_cmake_files(
 )
 
 if(SCINE_BUILD_TESTS OR SCINE_BUILD_PYTHON_BINDINGS)
-  find_package(PythonInterp REQUIRED)
+  find_package(Python3 REQUIRED)
 endif()
 
 # Tests
@@ -97,10 +96,8 @@ if(SCINE_BUILD_TESTS)
   import_gtest()
   add_executable(Sparrow_tests ${SPARROW_TEST_FILES} $<$<NOT:$<CONFIG:Debug>>:${SPARROW_TEST_SLOW_FILES}>)
   target_link_libraries(Sparrow_tests PRIVATE
-    GTest::Main
-    GMock::GMock
+    GTest::gmock_main
     Scine::Sparrow
-    cereal
     $<$<BOOL:${OpenMP_CXX_FOUND}>:OpenMP::OpenMP_CXX>
     ${CMAKE_DL_LIBS}
   )
@@ -115,10 +112,6 @@ if(SCINE_BUILD_TESTS)
     target_compile_options(Sparrow_tests PRIVATE /bigobj /MP /openmp-)
   endif()
 
-  if(MSVC)
-    target_compile_options(Sparrow_tests PRIVATE /bigobj /MP /openmp-)
-  endif()
-
   # App tests
   add_test(
     NAME Sparrow_App
@@ -126,9 +119,9 @@ if(SCINE_BUILD_TESTS)
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Tests/AppTests
   )
   set_tests_properties(Sparrow_App PROPERTIES
-    ENVIRONMENT SCINE_MODULE_PATH=${CMAKE_CURRENT_BINARY_DIR}:$ENV{SCINE_MODULE_PATH}
-    ENVIRONMENT PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}:$ENV{PYTHONPATH}
-    ENVIRONMENT PATH=${CMAKE_CURRENT_BINARY_DIR}:${PROJECT_BINARY_DIR}:$ENV{PATH}
+    ENVIRONMENT "SCINE_MODULE_PATH=${CMAKE_CURRENT_BINARY_DIR}:$ENV{SCINE_MODULE_PATH}"
+    ENVIRONMENT "PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}:$ENV{PYTHONPATH}"
+    ENVIRONMENT "PATH=${CMAKE_CURRENT_BINARY_DIR}:${PROJECT_BINARY_DIR}:$ENV{PATH}"
   )
 endif()
 

@@ -16,7 +16,6 @@
 #include <gmock/gmock.h>
 #include <omp.h>
 #include <memory>
-#include <omp.h>
 
 namespace Scine {
 namespace Sparrow {

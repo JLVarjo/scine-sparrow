@@ -12,6 +12,7 @@
 #include "boost/optional.hpp"
 #include <array>
 #include <string>
+#include <sstream>
 #include <unordered_map>
 
 namespace Scine {
