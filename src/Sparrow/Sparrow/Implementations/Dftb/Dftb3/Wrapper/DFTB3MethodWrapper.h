@@ -1,7 +1,7 @@
 /**
  * @file DFTB3MethodWrapper.h
  * @copyright This code is licensed under the 3-clause BSD license.\n
- *            Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.\n
+ *            Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.\n
  *            See LICENSE.txt for details.
  */
 #ifndef SPARROW_DFTB3METHODWRAPPER_H
@@ -25,7 +25,7 @@ namespace Sparrow {
  * @class DFTB3MethodWrapper DFTB3MethodWrapper.h
  * @brief A method wrapper handling DFTB3 calculations.
  */
-class DFTB3MethodWrapper final : public Utils::CloneInterface<DFTB3MethodWrapper, DFTBMethodWrapper> {
+class DFTB3MethodWrapper final : public Utils::CloneInterface<DFTB3MethodWrapper, DFTBMethodWrapper, Core::Calculator> {
  public:
   static constexpr const char* model = "DFTB3";
 

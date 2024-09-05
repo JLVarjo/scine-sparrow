@@ -1,7 +1,7 @@
 /**
  * @file
  * @copyright This code is licensed under the 3-clause BSD license.\n
- *            Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.\n
+ *            Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.\n
  *            See LICENSE.txt for details.
  */
 #ifndef SPARROW_DFTBMETHODWRAPPER_H
@@ -14,7 +14,8 @@ namespace Scine {
 namespace Sparrow {
 class TDDFTBData;
 
-class DFTBMethodWrapper : public Utils::CloneInterface<Utils::Abstract<DFTBMethodWrapper>, GenericMethodWrapper> {
+class DFTBMethodWrapper
+  : public Utils::CloneInterface<Utils::Abstract<DFTBMethodWrapper>, GenericMethodWrapper, Core::Calculator> {
  public:
   /**
    * @brief Constructor.
@@ -29,6 +30,13 @@ class DFTBMethodWrapper : public Utils::CloneInterface<Utils::Abstract<DFTBMetho
    */
   Utils::PropertyList possibleProperties() const final;
   TDDFTBData getTDDFTBData() const;
+  /**
+   * @brief Whether the calculator has no underlying Python code and can therefore
+   * release the global interpreter lock in Python bindings
+   */
+  bool allowsPythonGILRelease() const override {
+    return true;
+  };
 
  private:
   void assembleResults(const std::string& description) final;

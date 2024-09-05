@@ -1,12 +1,12 @@
 __copyright__ = """This code is licensed under the 3-clause BSD license.
-Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.
+Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.
 See LICENSE.txt for details.
 """
 
 import setuptools
 
 # Read README.rst for the long description
-with open("README.rst", "r") as fh:
+with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 
@@ -21,7 +21,7 @@ class EmptyListWithLength(list):
 setuptools.setup(
     name="scine_sparrow",
     version="@Sparrow_VERSION@",
-    author="ETH Zurich, Laboratory of Physical Chemistry, Reiher Group",
+    author="ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group",
     author_email="scine@phys.chem.ethz.ch",
     description="Open source semi-empirical quantum chemistry code",
     long_description=long_description,

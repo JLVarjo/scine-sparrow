@@ -1,6 +1,22 @@
 Changelog
 =========
 
+Release 5.1.0
+-------------
+
+- Make compatible with Unity builds
+
+Release 5.0.0
+-------------
+
+- Improve support for compilation on Windows (MSVC)
+- Update address in license
+
+Release 4.0.0
+-------------
+
+- Various bugfixes and improvements
+
 Release 3.1.0
 -------------
 

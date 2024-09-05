@@ -17,6 +17,10 @@ if(NOT TARGET Boost::filesystem OR NOT TARGET Boost::program_options)
   find_package(Boost REQUIRED COMPONENTS program_options filesystem)
 endif()
 
+set_source_files_properties(
+    ${SPARROW_UNITY_DISABLE} PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
+)
+
 # Sparrow is a Scine module and is always shared, never linked against
 add_library(Sparrow SHARED ${SPARROW_MODULE_FILES})
 
@@ -36,17 +40,15 @@ if(MSVC)
   target_compile_definitions(Sparrow PUBLIC BOOST_ALL_NO_LIB)
 endif()
 
-
 # Add an option to repropduce the standard PM6 errors
 # This is needed until a new reparametrization of PM6 is done with the right method.
 option(REPRODUCE_PM6_ERRORS "Reproduce the errors of standard PM6 implementations" ON)
 
 if(SCINE_PARALLELIZE)
   target_compile_options(Sparrow PRIVATE
-  $<$<BOOL:${OpenMP_CXX_FOUND}>:${OpenMP_CXX_FLAGS}>
-)
+    $<$<BOOL:${OpenMP_CXX_FOUND}>:${OpenMP_CXX_FLAGS}>
+  )
 endif()
-
 target_compile_definitions(Sparrow
  PRIVATE
   $<$<CONFIG:Debug>:EIGEN_INITIALIZE_MATRICES_BY_NAN>
@@ -63,7 +65,7 @@ target_link_libraries(Sparrow
     $<$<BOOL:${OpenMP_CXX_FOUND}>:OpenMP::OpenMP_CXX>
 )
 
-if(MSVC) 
+if(MSVC)
   target_compile_options(Sparrow PRIVATE /openmp- /bigobj /MP)
 endif()
 
@@ -113,6 +115,10 @@ if(SCINE_BUILD_TESTS)
     target_compile_options(Sparrow_tests PRIVATE /bigobj /MP /openmp-)
   endif()
 
+  if(MSVC)
+    target_compile_options(Sparrow_tests PRIVATE /bigobj /MP /openmp-)
+  endif()
+
   # App tests
   add_test(
     NAME Sparrow_App
@@ -147,7 +153,7 @@ if(APPLE)
   set_target_properties(SparrowApp PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 endif()
 
-if(MSVC) 
+if(MSVC)
   target_compile_options(SparrowApp PRIVATE /bigobj /MP /openmp-)
 endif()
 
@@ -170,10 +176,9 @@ target_link_libraries(RTSpectroscopyDriver
     ${CMAKE_DL_LIBS}
 )
 
-if(MSVC) 
+if(MSVC)
   target_compile_options(RTSpectroscopyDriver PRIVATE /bigobj /MP /openmp-)
 endif()
-
 
 # Add link library specific to MinGW
 if(WIN32 AND MINGW)

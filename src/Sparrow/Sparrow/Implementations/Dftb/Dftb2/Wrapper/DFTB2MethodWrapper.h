@@ -1,7 +1,7 @@
 /**
  * @file DFTB2MethodWrapper.h
  * @copyright This code is licensed under the 3-clause BSD license.\n
- *            Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.\n
+ *            Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.\n
  *            See LICENSE.txt for details.
  */
 #ifndef SPARROW_DFTB2METHODWRAPPER_H
@@ -25,7 +25,7 @@ namespace Sparrow {
  * @brief A method wrapper handling DFTB2 calculations,
  * also known as SCC-DFTB, self-consistent charge DFTB.
  */
-class DFTB2MethodWrapper final : public Utils::CloneInterface<DFTB2MethodWrapper, DFTBMethodWrapper> {
+class DFTB2MethodWrapper final : public Utils::CloneInterface<DFTB2MethodWrapper, DFTBMethodWrapper, Core::Calculator> {
  public:
   static constexpr const char* model = "DFTB2";
 

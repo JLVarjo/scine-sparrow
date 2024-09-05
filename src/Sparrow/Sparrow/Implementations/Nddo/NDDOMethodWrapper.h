@@ -1,7 +1,7 @@
 /**
  * @file
  * @copyright This code is licensed under the 3-clause BSD license.\n
- *            Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.\n
+ *            Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.\n
  *            See LICENSE.txt for details.
  */
 #ifndef SPARROW_NDDOMETHODWRAPPER_H
@@ -27,7 +27,8 @@ class DipoleMatrixCalculator;
  * @class NDDOMethodWrapper
  * @brief Abstract class acting as a genericWrapper for NDDO methods.
  */
-class NDDOMethodWrapper : public Utils::CloneInterface<Utils::Abstract<NDDOMethodWrapper>, GenericMethodWrapper> {
+class NDDOMethodWrapper
+  : public Utils::CloneInterface<Utils::Abstract<NDDOMethodWrapper>, GenericMethodWrapper, Core::Calculator> {
  public:
   /**
    * @brief Constructor.
@@ -49,6 +50,14 @@ class NDDOMethodWrapper : public Utils::CloneInterface<Utils::Abstract<NDDOMetho
    *        linear response method.
    */
   CISData getCISData() const;
+
+  /**
+   * @brief Whether the calculator has no underlying Python code and can therefore
+   * release the global interpreter lock in Python bindings
+   */
+  bool allowsPythonGILRelease() const override {
+    return true;
+  };
 
  protected:
   // Extracted method from all copy constructors and copy assignment operators.

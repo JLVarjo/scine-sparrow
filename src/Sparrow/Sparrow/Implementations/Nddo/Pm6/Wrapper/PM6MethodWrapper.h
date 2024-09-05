@@ -1,7 +1,7 @@
 /**
  * @file PM6MethodWrapper.h
  * @copyright This code is licensed under the 3-clause BSD license.\n
- *            Copyright ETH Zurich, Laboratory of Physical Chemistry, Reiher Group.\n
+ *            Copyright ETH Zurich, Department of Chemistry and Applied Biosciences, Reiher Group.\n
  *            See LICENSE.txt for details.
  */
 #ifndef SPARROW_PM6METHODWRAPPER_H
@@ -21,7 +21,7 @@ namespace Sparrow {
  * @class PM6MethodWrapper PM6MethodWrapper.h
  * @brief A method wrapper running PM6 calculations.
  */
-class PM6MethodWrapper final : public Utils::CloneInterface<PM6MethodWrapper, NDDOMethodWrapper> {
+class PM6MethodWrapper final : public Utils::CloneInterface<PM6MethodWrapper, NDDOMethodWrapper, Core::Calculator> {
  public:
   static constexpr const char* model = "PM6";
 
